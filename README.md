@@ -10,11 +10,11 @@ pip install -r requirements.txt
 ```
 
 # Test tracker
-You can either directly run the `test.py` file.
+You can directly run the `test.py` file.
 
 
 # Eval tracker
-You can either directly run the `eval.py` file.
+You can directly run the `eval.py` file.
 
 
 # Training
