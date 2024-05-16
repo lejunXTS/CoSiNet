@@ -1,6 +1,4 @@
-# CoSiNet
-
-Code will be made public here soon
+Code will be made public here soon!
 
 # CoSiNet
 Implementation of " " on Pytorch. 
