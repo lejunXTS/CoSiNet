@@ -57,12 +57,12 @@ class Net(nn.Module):  # 继承nn.Module
         self.conv = nn.Sequential(nn.Conv2d(2, 1, 1))
         # self.att = att
 
-        #self.tematt = GlobalAttentionBlock()       #me 注意力机制
+        #self.tematt = GlobalAttentionBlock()       
         #self.tematt = PSA(channel=256,reduction=8)
         self.tematt = ECALayer(256)
 
         self.detatt = CBAM(256)
-        #self.attse = nn.Sequential(SELayer1(256))    #注意力机制  SE block
+        #self.attse = nn.Sequential(SELayer1(256))    
         self.attse = ECALayer1(256)
 
         #self.eca = ECALayer(256)
@@ -83,25 +83,25 @@ class Net(nn.Module):  # 继承nn.Module
         # x1 = self.dcn(x1)
         # x2 = self.dcn(x2)
 
-        zf1 = self.tematt(z1)    #模板注意力机制 
+        zf1 = self.tematt(z1)    
         zf11 = self.attse(z1)
         zf11 = zf11 + z1
         z1 = zf1 + zf11
 
 
-        zf2 = self.tematt(z2)    #模板注意力机制 
+        zf2 = self.tematt(z2)    
         zf22 = self.attse(z2)
         zf22 = zf22 + z2
         z2 = zf2 + zf22
 
 
-        xf1 = self.detatt(x1)     #搜索注意力机制
+        xf1 = self.detatt(x1)    
         xf11 = self.attse(x1)
         xf11 = xf11 + x1
         x1 = xf1 + xf11
 
 
-        xf2 = self.detatt(x2)     #搜索注意力机制
+        xf2 = self.detatt(x2)     
         xf22 = self.attse(x2)
         xf22 = xf22 + x2
         x2 = xf2 + xf22
@@ -289,13 +289,13 @@ class TrackerSiamFC(Tracker):  # 继承got10k 也就是TrackerSiamFC可以调用
         # z1 = self.net.dcn(z1)
         # z2 = self.net.dcn(z2)
 
-        zf1 = self.net.tematt(z1)    #模板注意力机制 
+        zf1 = self.net.tematt(z1)    
         zf11 = self.net.attse(z1)
         zf11 = zf11 + z1
         self.kernel1 = zf1 + zf11
 
 
-        zf2 = self.net.tematt(z2)    #模板注意力机制 
+        zf2 = self.net.tematt(z2)    
         zf22 = self.net.attse(z2)
         zf22 = zf22 + z2
         self.kernel2 = zf2 + zf22
@@ -336,13 +336,13 @@ class TrackerSiamFC(Tracker):  # 继承got10k 也就是TrackerSiamFC可以调用
         # x1 = self.net.dcn(x1)
         # x2 = self.net.dcn(x2)
 
-        xf1 = self.net.detatt(x1)     #搜索注意力机制
+        xf1 = self.net.detatt(x1)     
         xf11 = self.net.attse(x1)
         xf11 = xf11 + x1
         x1 = xf1 + xf11
 
 
-        xf2 = self.net.detatt(x2)     #搜索注意力机制
+        xf2 = self.net.detatt(x2)     
         xf22 = self.net.attse(x2)
         xf22 = xf22 + x2
         x2 = xf2 + xf22
