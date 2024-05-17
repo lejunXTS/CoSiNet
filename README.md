@@ -1,5 +1,3 @@
-Code will be made public here soon!
-
 CoSiNet is a single-object tracking algorithm proposed by Mr. Wenjun Zhou, which is an improved method based on our previous work, SiamDUL.
 
 The code was implemented by Dr. Zhou (zhouwenjun@swpu.edu.cn) and Ms. Liu from the Image Processing and Parallel Computing Laboratory, School of Computer Science, Southwest Petroleum University.
